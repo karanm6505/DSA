@@ -12,7 +12,10 @@ Node* createNode(int data)
     newnode->next = NULL;
     return newnode;
 }
-
+void insertBegin(Node **head,int data)
+{
+    
+}
 int main()
 {
     Node* head = malloc(sizeof(Node));
