@@ -14,7 +14,8 @@ Node* createNode(int data)
 }
 void insertBegin(Node **head,int data)
 {
-    Node* newnode =
+    Node* newnode = createNode(data);
+    
 }
 int main()
 {
