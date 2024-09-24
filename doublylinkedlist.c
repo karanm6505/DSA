@@ -104,3 +104,90 @@ void deleteEnd(Node **head)
         temp->next = NULL;
     }
 }
+void deletePos(Node **head,int pos)
+{
+    if(*head==NULL)
+    {
+        printf("Empty list\n");
+        return;
+    }
+    if((*head)->next == NULL || pos == 1)
+    {
+        deleteBegin(head);
+        return;
+    }
+    Node *temp = *head;
+    int count = 1;
+    while(temp!=NULL && count<pos)
+        {
+            temp = temp->next;
+            count++;
+        }
+    if(temp == NULL)
+        {
+            printf("Invalid Position\n");
+            return;
+        }
+    if(temp->prev != NULL)
+    {
+        temp->prev->next = temp->next;
+    }
+    if(temp->next != NULL)
+    {
+    temp->next->prev = temp->prev;
+    }
+    free(temp);
+    
+}
+void destroyList(Node **head)
+{
+    Node* temp = *head;
+    if(*head == NULL)
+    {
+        printf("Empty List\n");
+        free(temp);
+    }
+    while(temp!=NULL)
+    {
+        Node* next = temp->next;
+        free(temp);
+        temp = next;
+    }
+    *head = NULL;
+}
+void display(Node *head)
+{
+    Node *temp = head;
+    if(head == NULL)
+    {
+        printf("Empty list\n");
+        return;
+    }
+    while(temp!=NULL)
+    {
+        printf("%d",temp->data);
+        if(temp->next!=NULL)
+            printf(" -> ");
+        temp = temp->next;
+    }
+}
+void displayreverse(Node *head)
+{
+    Node *temp = head;
+    if(head == NULL)
+    {
+        printf("Empty list\n");
+        return;
+    }
+    while(temp->next!=NULL)
+    {
+        temp = temp->next;
+    }
+    while(temp!=NULL)
+    {
+        printf("%d",temp->data);
+        if(temp->prev!=NULL)
+            printf(" <- ");
+        temp = temp->prev;
+    }
+}
